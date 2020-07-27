@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenhaonan.cmsweek2.Mapper.NianJianMapper">
+	<insert id="insert">
+		insert into nianjian(id,word,about,name,think,access,qian,startdate,date,zhuangtai,beizu) values(#{id},#{word},#{about},#{name},#{think},#{access},#{qian},#{startdate},#{date},#{zhuangtai},#{beizu})
+	</insert>
+	<select id="selects" resultType="NianJian">
+		select * from NianJian
+		<where>
+			<if test="word!=null">
+				and word=#{word}
+			</if>
+			<if test="about!=null">
+				and about=#{about}
+			</if>
+			<if test="name!=null">
+				and name=#{name}
+			</if>
+			<if test="access!=null">
+				and access=#{access}
+			</if>
+			<if test="qian!=null">
+				and qian=#{qian}
+			</if>
+			<if test="date!=null">
+				and date=#{date}
+			</if>
+		</where>
+	</select>
+	<select id="toupdate" resultType="NianJian">
+		select * from nianjian where id=#{id}
+	</select>
+	<update id="update">
+		update nianjian set (#{id},#{word},#{about},#{name},#{think},#{access},#{qian},#{startdate},#{date},#{zhuangtai},#{beizu})
+	</update>
+</mapper>
